@@ -19,6 +19,18 @@ const maxNumberOfAttempts = 5;
 // <- 32
 // > getRandomNumber(1, 50)
 // <- 11
+
+function checkInput(event) {
+  console.log(event.target.value)
+  if (event.target.value > 99 || event.target.value < 1) {
+      outOfRange.style.display = '';
+      submitButton.disabled = true;
+  } else {
+    outOfRange.style.display = 'none';
+    submitButton.disabled = false;
+  }
+}
+
 function getRandomNumber(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
@@ -46,12 +58,6 @@ function checkGuess() {
     } else {
       tooHighMessage.style.display = '';
     }
-  
-  if (guess > 99 || guess < 1) {
-      outOfRange.style.display = '';
-      tooLowMessage.style.display = 'none';
-      tooHighMessage.style.display = 'none';
-  }
 
     const remainingAttempts = maxNumberOfAttempts - attempts;
 
